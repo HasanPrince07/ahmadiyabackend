@@ -1,4 +1,3 @@
-console.log("call 1st line");
 const express = require("express");
 const app = express();
 app.use(express.json());
