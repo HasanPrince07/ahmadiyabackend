@@ -1,16 +1,16 @@
 const Main = require("../model/main")
 const helper = require("../helper/message")
 
-exports.check=(req,res)=>{
+exports.check = (req,res)=>{
     try{
         res.json({
-            status:helper.status200,
-            message:helper.message200
+            status: helper.status200,
+            message: helper.message200
         })
     }catch(error){
         res.json({
-            status:helper.status500,
-            error:error.message
+            status: helper.status500,
+            error: error.message
         })
     }
 }
