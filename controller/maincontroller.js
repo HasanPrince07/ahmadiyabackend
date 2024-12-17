@@ -4,13 +4,13 @@ const helper = require("../helper/message")
 exports.check=(req,res)=>{
     try{
         res.json({
-            status:200,
-            message:"success"
+            status:helper.status200,
+            message:helper.message200
         })
     }catch(error){
         res.json({
-            status:500,
-            message:error
+            status:helper.status500,
+            error:error.message
         })
     }
 }
