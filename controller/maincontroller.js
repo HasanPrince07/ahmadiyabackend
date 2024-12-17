@@ -1,6 +1,19 @@
 const Main = require("../model/main")
 const helper = require("../helper/message")
 
+exports.check=(req,res)=>{
+    try{
+        res.json({
+            status:200,
+            message:"success"
+        })
+    }catch(error){
+        res.json({
+            status:500,
+            message:error
+        })
+    }
+}
 exports.fetchMain = async (req, res) => {
     try {
         const record = await Main.findOne()
