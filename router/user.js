@@ -18,21 +18,10 @@ const addfacilityC = require("../controller/addfacilitycontroller");
 const historyC = require("../controller/historycontroller");
 const contactC = require("../controller/contactcontroller");
 
-router.get("/check", (req, res) => {
-    try {
-        res.json({
-            status: 200
-        });
-    } catch (error) {
-        res.json({
-            error: error
-        });
-    }
-});
-
 
 router.get("/fetchHeader", headerC.fetchHeader)
 
+router.get("/check", mainC.check)
 router.get("/fetchMain", mainC.fetchMain)
 
 router.get("/fetchImage", imageC.fetchImage)
