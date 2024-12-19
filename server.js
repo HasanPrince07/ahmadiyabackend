@@ -2,9 +2,24 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 app.use(express.json());
-app.use(cors({
-    origin: "https://www.ahmadiyamadarsa.com"
-}));
+const allowedOrigins = [
+  'https://www.ahmadiyamadarsa.com',
+  'https://ahmadiyamadarsa.com',
+];
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (allowedOrigins.includes(origin) || !origin) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true,
+  })
+);
 require("dotenv").config();
 const userRouter = require("./router/user");
 const adminRouter = require("./router/admin");
