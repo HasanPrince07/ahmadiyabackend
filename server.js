@@ -1,9 +1,7 @@
 const express = require("express");
 const cors = require("cors");
-//const path = require("path");
 const app = express();
 app.use(express.json());
-//app.use(express.static(path.join(__dirname, 'frontend/build')));
 const allowedOrigins = [
   'https://www.ahmadiyamadarsa.com',
   'https://ahmadiyamadarsa.com',
@@ -32,7 +30,4 @@ mongoose.connect(process.env.DB_URL).then(() => { console.log("Connected to Mong
 app.use(express.static("public"));
 app.use('/user', userRouter);
 app.use('/admin', adminRouter);
-app.get('https://www.ahmadiyamadarsa.com/contact', (req, res) => {
-  res.json({message:"contact page"});
-});
 app.listen(process.env.PORT, () => { console.log(`Server is running on port ${process.env.PORT}`) });
