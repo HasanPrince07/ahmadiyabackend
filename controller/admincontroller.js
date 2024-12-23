@@ -9,37 +9,37 @@ exports.login = async (req, res) => {
     const { username, password } = req.body
     try {
         const record = await Admin.findOne({ username: username })
-        if(!record){
+        if (!record) {
             res.json({
                 status: helper.status401,
                 message: helper.message401
-            })
-        }else{
-        const comparepassword = await bcrypt.compare(password, record.password)
-        if (comparepassword === true) {
-            jwt.sign({ id: record._id, username: record.username }, jwtkey, { expiresIn: "2h" }, (error, token) => {
-                if (error) {
-                    res.json({
-                        status: helper.status500,
-                        message: helper.message500,
-                        error: error.message
-                    })
-                } else {
-                    res.json({
-                        status: helper.status200,
-                        message: helper.message200,
-                        username: record.username,
-                        token: token
-                    })
-                }
             })
         } else {
-            res.json({
-                status: helper.status401,
-                message: helper.message401
-            })
+            const comparepassword = await bcrypt.compare(password, record.password)
+            if (comparepassword === true) {
+                jwt.sign({ id: record._id, username: record.username }, jwtkey, { expiresIn: "2h" }, (error, token) => {
+                    if (error) {
+                        res.json({
+                            status: helper.status500,
+                            message: helper.message500,
+                            error: error.message
+                        })
+                    } else {
+                        res.json({
+                            status: helper.status200,
+                            message: helper.message200,
+                            username: record.username,
+                            token: token
+                        })
+                    }
+                })
+            } else {
+                res.json({
+                    status: helper.status401,
+                    message: helper.message401
+                })
+            }
         }
-    }
     } catch (error) {
         res.json({
             status: helper.status500,
