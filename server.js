@@ -5,6 +5,7 @@ app.use(express.json());
 const allowedOrigins = [
   'https://www.ahmadiyamadarsa.com',
   'https://ahmadiyamadarsa.com',
+  'ahmadiyabackend.onrender.com/'
 ];
 app.use(
   cors({
