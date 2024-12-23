@@ -9,8 +9,14 @@ exports.login = async (req, res) => {
     const { username, password } = req.body
     try {
         const record = await Admin.findOne({ username: username })
+        if(!record){
+            res.json({
+                status: helper.status401,
+                message: helper.message401
+            })
+        }else{
         const comparepassword = await bcrypt.compare(password, record.password)
-        if (record && comparepassword === true) {
+        if (comparepassword === true) {
             jwt.sign({ id: record._id, username: record.username }, jwtkey, { expiresIn: "2h" }, (error, token) => {
                 if (error) {
                     res.json({
@@ -33,6 +39,7 @@ exports.login = async (req, res) => {
                 message: helper.message401
             })
         }
+    }
     } catch (error) {
         res.json({
             status: helper.status500,
