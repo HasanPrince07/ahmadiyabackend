@@ -131,7 +131,7 @@ exports.sendEmail = async (req, res) => {
             to: email,
             subject: "Forgot password link",
             text: "body",
-            html: `<a href="http://localhost:3000/forgotlink/${email}">click here to change password</a>`
+            html: `<a href="https://ahmadiyamadarsa.com/forgotlink/${email}">click here to change password</a>`
         });
         res.json({
             status: helper.status200,
