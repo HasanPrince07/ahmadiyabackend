@@ -19,7 +19,7 @@ const historyC = require("../controller/historycontroller");
 const contactC = require("../controller/contactcontroller");
 const allimageC = require("../controller/allimagecontroller");
 
-const multer = require("multer");
+//const multer = require("multer");
 const AWS = require("aws-sdk");
 const multerS3 = require("multer-s3");
 
@@ -31,19 +31,34 @@ AWS.config.update({
 
 const s3 = new AWS.S3();
 
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "./public");
-  },
-  filename: function (req, file, cb) {
-    cb(null, Date.now() + file.originalname);
-  },
+const upload = multer({
+    storage: multerS3({
+        s3: s3,
+        bucket: process.env.AWS_BUCKET_NAME,
+        acl: "public-read",
+        metadata: (req, file, cb) => {
+            cb(null, { fieldName: file.fieldname });
+        },
+        key: (req, file, cb) => {
+            cb(null, `${Date.now().toString()}-${file.originalname}`);
+        }
+    }),
+    limits: { fileSize: 1024 * 1024 * 10 }
 });
 
-const upload = multer({
-  storage: storage,
-  limits: { fileSize: 1024 * 1024 * 10 },
-});
+// const storage = multer.diskStorage({
+//   destination: function (req, file, cb) {
+//     cb(null, "./public");
+//   },
+//   filename: function (req, file, cb) {
+//     cb(null, Date.now() + file.originalname);
+//   },
+// });
+
+// const upload = multer({
+//   storage: storage,
+//   limits: { fileSize: 1024 * 1024 * 10 },
+// });
 
 router.post("/login", adminC.login);
 router.get("/authentication", adminC.authentication);
