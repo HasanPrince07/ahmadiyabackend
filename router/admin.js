@@ -19,7 +19,7 @@ const historyC = require("../controller/historycontroller");
 const contactC = require("../controller/contactcontroller");
 const allimageC = require("../controller/allimagecontroller");
 
-//const multer = require("multer");
+const multer = require("multer");
 const AWS = require("aws-sdk");
 const multerS3 = require("multer-s3");
 
