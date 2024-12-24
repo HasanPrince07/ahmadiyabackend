@@ -35,7 +35,7 @@ exports.updateHeader = async (req, res) => {
             })
         }
     } else {
-        const logo = req.file.filename
+        const logo = req.file.location
         const { heading, headingColor, headingBColor, linksColor, linksBColor, aLinkColor, aLinkBColor } = req.body
         try {
             await Header.findOneAndUpdate({ logo: logo, heading: heading, headingColor: headingColor, headingBColor: headingBColor, linksColor: linksColor, linksBColor: linksBColor, aLinkColor: aLinkColor, aLinkBColor: aLinkBColor })
