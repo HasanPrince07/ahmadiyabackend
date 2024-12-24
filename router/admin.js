@@ -20,7 +20,7 @@ const contactC = require("../controller/contactcontroller");
 const allimageC = require("../controller/allimagecontroller");
 
 const multer = require("multer");
-const AWS = require("aws-sdk");
+const { S3Client } = require("@aws-sdk/client-s3");
 const multerS3 = require("multer-s3");
 
 AWS.config.update({
