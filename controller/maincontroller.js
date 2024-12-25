@@ -48,7 +48,7 @@ exports.updateMain = async (req, res) => {
             })
         }
     } else {
-        const image = req.file.filename
+        const image = req.file.location
         const { sectionBColor, heading, subHeading, headingColor, button, buttonColor, buttonBColor, buttonHColor, buttonHBColor } = req.body
         try {
             await Main.findOneAndUpdate({ image: image, sectionBColor: sectionBColor, heading: heading, subHeading: subHeading, headingColor: headingColor, button: button, buttonColor: buttonColor, buttonBColor: buttonBColor, buttonHColor: buttonHColor, buttonHBColor: buttonHBColor })
