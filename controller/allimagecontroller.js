@@ -2,7 +2,7 @@ const Allimage = require("../model/allimage");
 const helper = require("../helper/message");
 
 exports.addAImage = (req, res) => {
-    const AImage = req.file.filename;
+    const AImage = req.file.location;
     try {
         const record = new Allimage({
             AImage: AImage,
@@ -74,7 +74,7 @@ exports.fetchAImageById = async (req, res) => {
 };
 
 exports.updateAImage = async (req, res) => {
-    const AImage = req.file.filename;
+    const AImage = req.file.location;
     const AId = req.params.id;
     try {
         await Allimage.findByIdAndUpdate(AId, {
