@@ -19,8 +19,8 @@ exports.fetchFooter = async (req, res) => {
 };
 
 exports.updateFooter = async (req, res) => {
-    const FImage = req.files.FImage[0].filename
-    const CImage = req.files.CImage[0].filename
+    const FImage = req.files.FImage[0].location
+    const CImage = req.files.CImage[0].location
     const { Heading, BColor, HColor, TColor, Address, Email, Phone, MAddress } = req.body
     try {
         await Footer.findOneAndUpdate({ FImage: FImage, CImage: CImage, Heading: Heading, BColor: BColor, HColor: HColor, TColor: TColor, Address: Address, Email: Email, Phone: Phone, MAddress: MAddress })
