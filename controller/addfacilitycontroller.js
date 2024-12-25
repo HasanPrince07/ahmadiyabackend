@@ -22,7 +22,7 @@ exports.addFacilities = (req, res) => {
             });
         }
     } else {
-        const FImage = req.file.filename;
+        const FImage = req.file.location;
         const { FName, FDetail } = req.body;
         try {
             const record = new Facilities({
@@ -118,7 +118,7 @@ exports.updateFacilities = async (req, res) => {
             });
         }
     } else {
-        const FImage = req.file.filename;
+        const FImage = req.file.location;
         const { FName, FDetail } = req.body;
         const FId = req.params.id;
         try {
