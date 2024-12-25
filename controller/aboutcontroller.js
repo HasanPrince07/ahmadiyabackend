@@ -35,7 +35,7 @@ exports.updateAbout = async (req, res) => {
             });
         }
     } else {
-        const Image = req.file.filename
+        const Image = req.file.location
         const { PName, PDetail, About, BColor, HColor, TColor } = req.body
         try {
             await AboutT.findOneAndUpdate({ Image: Image, PName: PName, PDetail: PDetail, About: About, BColor: BColor, HColor: HColor, TColor: TColor })
