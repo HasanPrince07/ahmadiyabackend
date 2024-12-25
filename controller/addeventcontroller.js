@@ -24,7 +24,7 @@ exports.addEvents = (req, res) => {
             });
         }
     } else {
-        const eImage = req.file.filename;
+        const eImage = req.file.location;
         const { eName, eDate, eStatus, eDetail } = req.body;
         try {
             const record = new Events({
@@ -176,7 +176,7 @@ exports.updateEvents = async (req, res) => {
             });
         }
     } else {
-        const eImage = req.file.filename;
+        const eImage = req.file.location;
         const { eName, eDate, eStatus, eDetail } = req.body;
         const eId = req.params.id;
         try {
