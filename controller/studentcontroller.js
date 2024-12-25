@@ -23,7 +23,7 @@ exports.addStudents = (req, res) => {
             });
         }
     } else {
-        const SImage = req.file.filename;
+        const SImage = req.file.location;
         const { SName, SPercentage, SClass } = req.body;
         try {
             const record = new Student({
@@ -121,7 +121,7 @@ exports.updateStudents = async (req, res) => {
             });
         }
     } else {
-        const SImage = req.file.filename;
+        const SImage = req.file.location;
         const { SName, SPercentage, SClass } = req.body;
         const SId = req.params.id;
         try {
