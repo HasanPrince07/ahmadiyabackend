@@ -19,10 +19,10 @@ exports.fetchImage = async (req, res) => {
 }
 
 exports.updateImage = async (req, res) => {
-    const imageOne = req.files.imageOne[0].filename
-    const imageTwo = req.files.imageTwo[0].filename
-    const imageThree = req.files.imageThree[0].filename
-    const imageFour = req.files.imageFour[0].filename
+    const imageOne = req.files.imageOne[0].location
+    const imageTwo = req.files.imageTwo[0].location
+    const imageThree = req.files.imageThree[0].location
+    const imageFour = req.files.imageFour[0].location
     try {
         await Image.findOneAndUpdate({ imageOne: imageOne, imageTwo: imageTwo, imageThree: imageThree, imageFour: imageFour })
         res.json({
