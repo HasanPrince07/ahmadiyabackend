@@ -5,9 +5,8 @@ app.use(express.json());
 const allowedOrigins = [
   'https://www.ahmadiyamadarsa.com',
   'https://ahmadiyamadarsa.com',
-  'https://www.ahmadiyamadarsa.com',
-  'https://ahmadiyamadarsa.com',
-  'ahmadiyabackend.onrender.com/'
+  'https://www.ahmadiyamadarsa.in',
+  'https://ahmadiyamadarsa.in',
 ];
 app.use(
   cors({
